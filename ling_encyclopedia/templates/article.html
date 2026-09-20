@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ a.title }} — Лингвистическая энциклопедия{% endblock %}
+{% block content %}
+    <a class="back" href="{{ url_for('index') }}">← Ко всем статьям</a>
+
+    <div class="card">
+        <h2>{{ a.portrait_emoji }} {{ a.title }}</h2>
+        <p><em>{{ a.years }} — {{ a.subtitle }}</em></p>
+    </div>
+
+    {% for s in a.sections %}
+    <div class="card">
+        <h2>{{ s.heading }}</h2>
+        <p>{{ s.text }}</p>
+    </div>
+    {% endfor %}
+
+    <blockquote>
+        «{{ a.quote.text }}»
+        <cite>— {{ a.quote.author }}</cite>
+    </blockquote>
+
+    <div class="card">
+        <h2>Интересные факты</h2>
+        <ul class="facts">
+            {% for f in a.facts %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Главная — Лингвистическая энциклопедия{% endblock %}
+{% block content %}
+    <div class="card">
+        <h2>Добро пожаловать!</h2>
+        <p>
+            Здесь ты найдёшь короткие и понятные статьи о великих лингвистах —
+            людях, которые изучали язык и раскрывали его тайны.
+        </p>
+    </div>
+
+    {% for a in articles %}
+    <div class="card">
+        <h2>{{ a.portrait_emoji }} {{ a.title }}</h2>
+        <p><em>{{ a.years }} — {{ a.subtitle }}</em></p>
+        <p><a href="{{ url_for('article', slug=a.slug) }}">Читать статью →</a></p>
+    </div>
+    {% endfor %}
+{% endblock %}
